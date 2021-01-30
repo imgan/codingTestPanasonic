@@ -1,6 +1,6 @@
 # codingTestPanasonic
 
-<b>openjdk version "1.8.0_275"<b><br>
+<b>openjdk version "1.8.0_275"</b><br>
 OpenJDK Runtime Environment (build 1.8.0_275-8u275-b01-0ubuntu1~20.04-b01)<br>
 OpenJDK 64-Bit Server VM (build 25.275-b01, mixed mode)<br>
 
