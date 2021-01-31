@@ -1,0 +1,6 @@
+{
+  "state_name": {
+    "type": "string",
+    "status": "mandatory"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "credit_card_number": {
+    "type": "string",
+    "status": "mandatory"
+  },
+  "card_holder": {
+    "type": "string",
+    "status": "mandatory"
+  },
+  "expiration_date": {
+    "type": "timestamp",
+    "status": "mandatory",
+    "patern": "yyyy-mm-dd"
+  },
+  "security_code": {
+    "type": "string"
+  },
+  "amount": {
+    "type": "integer",
+    "status": "mandatory"
+  }
+}
