@@ -3,10 +3,11 @@ package com.codingTest.codingTest.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
-@Table(name="payment")
+@Table(name="state")
 public class State extends BaseDomain{
     private Integer id;
     private String stateName;
@@ -29,5 +30,25 @@ public class State extends BaseDomain{
 
     public void setStateName(String stateName) {
         this.stateName = stateName;
+    }
+
+    @Override
+    public String getCreatedBy() {
+        return super.getCreatedBy();
+    }
+
+    @Override
+    public void setCreatedBy(String createdBy) {
+        super.setCreatedBy(createdBy);
+    }
+
+    @Override
+    public Date getCreatedAt(){
+        return super.getCreatedAt();
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        super.setCreatedAt(createdAt);
     }
 }

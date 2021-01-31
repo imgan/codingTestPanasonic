@@ -49,4 +49,20 @@ public class DateTimeUtil {
         result = TimeUnit.MILLISECONDS.toDays(data);
         return result;
     }
+
+    public static Boolean isBackdated(Date startDate) throws ParseException {
+        boolean isBackdated = false;
+        Date current = new Date();
+        //create a date one day before current date
+//        Date payDate = new Date(startDate);
+        //compare both dates
+        if (startDate.before(current)) {
+            System.out.println("The date is older than current day");
+            isBackdated = true;
+        } else {
+            System.out.println("The date is future day");
+        }
+
+        return isBackdated;
+    }
 }

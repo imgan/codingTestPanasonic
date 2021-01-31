@@ -3,6 +3,7 @@ package com.codingTest.codingTest.controller;
 import com.codingTest.codingTest.domain.Payment;
 import com.codingTest.codingTest.repositories.PaymentRepository;
 import com.codingTest.codingTest.services.PaymentGatewayService;
+import com.codingTest.codingTest.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import com.codingTest.codingTest.util.ConstantUtil;
 import com.codingTest.codingTest.util.ValidateUtil;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/payment")
@@ -28,8 +28,11 @@ public class PaymentController extends BaseController {
     @RequestMapping(value = "/pay", method = RequestMethod.POST)
     public ResponseEntity<Map> processpayment(HttpServletRequest request, @RequestBody Map map) {
         loggerHttp(request, "Request", map);
+        Integer amount = 0;
         Map resultMap;
-        Integer amount = (int)(map.get("amount"));
+        if(map.get("amount") != null){
+            amount = (int)(map.get("amount"));
+        }
         try {
             resultMap = ValidateUtil.validateAPI("process_payment.json", map);
             if(resultMap == null){

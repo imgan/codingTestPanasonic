@@ -4,11 +4,13 @@ import com.codingTest.codingTest.domain.Payment;
 import com.codingTest.codingTest.repositories.PaymentRepository;
 import com.codingTest.codingTest.services.PaymentGatewayService;
 import com.codingTest.codingTest.util.ConstantUtil;
+import com.codingTest.codingTest.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -28,6 +30,13 @@ public class PaymentGatewayImpl extends BaseService implements PaymentGatewaySer
         Date expirationDate = simpleDateFormat.parse((String) map.get("expiration_date"));
         Double amount = Double.valueOf((Integer) map.get("amount"));
         Payment payment =  paymentRepository.findByCreditCardNumber(creditCardNumber);
+        Boolean isBackdated = DateTimeUtil.isBackdated(expirationDate);
+
+        if(isBackdated){
+            result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.BAD_REQUEST, "Expiration date, it cannot be in the past", null));
+            return result;
+        }
+
         if(payment != null){
             result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.BAD_REQUEST, "Duplicate ! ,try another credit card number", null));
             return result;
@@ -102,6 +111,13 @@ public class PaymentGatewayImpl extends BaseService implements PaymentGatewaySer
         Date expirationDate = simpleDateFormat.parse((String) map.get("expiration_date"));
         Double amount = Double.valueOf((Integer) map.get("amount"));
         Payment payment =  paymentRepository.findByCreditCardNumber(creditCardNumber);
+        Boolean isBackdated = DateTimeUtil.isBackdated(expirationDate);
+
+        if(isBackdated){
+            result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.BAD_REQUEST, "Expiration date, it cannot be in the past", null));
+            return result;
+        }
+
         if(payment != null){
             result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.BAD_REQUEST, "Duplicate ! ,try another credit card number", null));
             return result;
@@ -184,6 +200,13 @@ public class PaymentGatewayImpl extends BaseService implements PaymentGatewaySer
         Date expirationDate = simpleDateFormat.parse((String) map.get("expiration_date"));
         Double amount = Double.valueOf((Integer) map.get("amount"));
         Payment payment = paymentRepository.findByCreditCardNumber(creditCardNumber);
+        Boolean isBackdated = DateTimeUtil.isBackdated(expirationDate);
+
+        if(isBackdated){
+            result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.BAD_REQUEST, "Expiration date, it cannot be in the past", null));
+            return result;
+        }
+
         if(payment == null ){
             result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.NOT_FOUND, "Credit Card Not found", null));
             return result;
@@ -254,6 +277,13 @@ public class PaymentGatewayImpl extends BaseService implements PaymentGatewaySer
         Date expirationDate = simpleDateFormat.parse((String) map.get("expiration_date"));
         Double amount = Double.valueOf((Integer) map.get("amount"));
         Payment payment = paymentRepository.findByCreditCardNumber(creditCardNumber);
+        Boolean isBackdated = DateTimeUtil.isBackdated(expirationDate);
+
+        if(isBackdated){
+            result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.BAD_REQUEST, "Expiration date, it cannot be in the past", null));
+            return result;
+        }
+
         if(payment == null ){
             result.put(ConstantUtil.DATA, errorResponse(ConstantUtil.NOT_FOUND, "Credit Card Not found", null));
             return result;

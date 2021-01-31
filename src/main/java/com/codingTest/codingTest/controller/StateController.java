@@ -25,15 +25,32 @@ public class StateController extends BaseController{
     public ResponseEntity<Map> addState(HttpServletRequest request, @RequestBody Map map) {
         loggerHttp(request, "Request", map);
         Map resultMap;
-        Integer amount = (int)(map.get("amount"));
         try {
-            resultMap = ValidateUtil.validateAPI("process_payment.json", map);
+            resultMap = ValidateUtil.validateAPI("state/save_state.json", map);
             if(resultMap == null){
                 resultMap = stateService.saveState(map);
             }
         } catch (Exception e) {
             logger.error("[FATAL]" ,e);
-            resultMap = errorResponse(ConstantUtil.STATUS_ERROR, "payment process", null);
+            resultMap = errorResponse(ConstantUtil.STATUS_ERROR, "save state", null);
+        }
+
+        loggerHttp(request, ConstantUtil.RESPONSE, resultMap);
+        return new ResponseEntity<>(resultMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/update_state", method = RequestMethod.POST)
+    public ResponseEntity<Map> updateState(HttpServletRequest request, @RequestBody Map map) {
+        loggerHttp(request, "Request", map);
+        Map resultMap;
+        try {
+            resultMap = ValidateUtil.validateAPI("state/update_state.json", map);
+            if(resultMap == null){
+                resultMap = stateService.updateState(map);
+            }
+        } catch (Exception e) {
+            logger.error("[FATAL]" ,e);
+            resultMap = errorResponse(ConstantUtil.STATUS_ERROR, "save state", null);
         }
 
         loggerHttp(request, ConstantUtil.RESPONSE, resultMap);

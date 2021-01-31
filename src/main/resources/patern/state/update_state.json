@@ -1,0 +1,10 @@
+{
+  "state_name": {
+    "type": "string",
+    "status": "mandatory"
+  },
+  "state_id": {
+    "type": "number",
+    "status": "mandatory"
+  }
+}
