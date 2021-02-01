@@ -8,10 +8,10 @@ Java version: 1.8.0_275, vendor: Private Build, runtime: /usr/lib/jvm/java-8-ope
 Default locale: en_US, platform encoding: UTF-8 <br>
 OS name: "linux", version: "5.8.0-41-generic", arch: "amd64", family: "unix"<br>
 
-How to Run:
-Install : JDK Version 1.8 
-Install : Maven Version 3.6.3 
-Install IDE (Recomended) : Intellij Idea ( https://www.jetbrains.com/idea/ ) or Netbeans, Spring tools suite or Eclipse
+How to Run:<br>
+Install : JDK Version 1.8 <br>
+Install : Maven Version 3.6.3 <br>
+Install IDE (Recomended) : Intellij Idea ( https://www.jetbrains.com/idea/ ) or Netbeans, Spring tools suite or Eclipse<br>
 
 1. Import existing maven project 
 2. Wait until donwloading maven dependecy finish
