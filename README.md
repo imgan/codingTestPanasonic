@@ -17,3 +17,6 @@ Install IDE (Recomended) : Intellij Idea ( https://www.jetbrains.com/idea/ ) or 
 2. Wait until donwloading maven dependecy finish
 3. Configure mysql database on <i>application.properties file</i>
 4. open terminal -> mvn spring-boot:run 
+
+POSTMAN
+https://documenter.getpostman.com/view/4461960/TW6zJ8Ro
